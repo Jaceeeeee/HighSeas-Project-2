@@ -23,7 +23,7 @@ def do():
     def check_circle_collision() -> bool:
         mouse_pos = pygame.mouse.get_pos()
 
-        if math.sqrt((mouse_pos[0] - circle_pos[0])**2 + (mouse_pos[1] - circle_pos[1])**2) <= 50:
+        if math.sqrt((mouse_pos[0] - circle_pos[0])**2 + (mouse_pos[1] - circle_pos[1])**2) <= 120:
             return True
         return False
 
@@ -31,8 +31,12 @@ def do():
         mouse_pos = pygame.mouse.get_pos()
         return buttonx-150<mouse_pos[0]<buttonx+150 and buttony-50<mouse_pos[1]<buttony+50
 
+    def check_start_collision() -> bool:
+        mouse_pos = pygame.mouse.get_pos()
+        return buttonx-150<mouse_pos[0]<buttonx+150 and buttony-50<mouse_pos[1]<buttony+50
+
     button1 = pygame.image.load('REALPRESSME.png')
-    button1 = pygame.transform.scale(button1, (600,600))
+    button1 = pygame.transform.scale(button1, (100,100))
 
     button2 = pygame.image.load('STARTUPBUTTON.png')
     button2 = pygame.transform.scale(button2, (300,100))
@@ -87,8 +91,8 @@ def do():
                         screen.fill('gray')
                         pygame.draw.circle(screen, "darkgreen", (circlex, circley), 60)
                         screen.blit(button1,(circlex, circley))
-                        circlex= (random.randint(50,950))
-                        circley= (random.randint(50,750))
+                        circlex= (random.randint(0,900))
+                        circley= (random.randint(0,700))
                         circle_pos = (circlex, circley)
                         if clicks == 16:
                             print("clear")
@@ -127,12 +131,11 @@ def do():
         screen.blit(text, text_rect)
         screen.blit(secondtext, secondtext_rect)
         screen.blit(thirdtext, thirdtext_rect)
-        #pygame.draw.circle(screen, 'green', (circlex, circley), 50)
-        screen.blit(button1,(circlex - 50, circley - 50))
+        #pygame.draw.circle(screen, 'green', (circlex, circley), 60)
+        screen.blit(button1,(circlex, circley))
         screen.blit(button2,(buttonx-216.5, buttony-85))
         mouse_pos = pygame.mouse.get_pos()
         screen.blit(plunger_cursor, (mouse_pos[0]-15, mouse_pos[1]-35))
-        pygame.mouse.set_visible(False)
 
         pygame.display.update()
 
