@@ -136,6 +136,7 @@ def do():
         screen.blit(button2,(buttonx-216.5, buttony-85))
         mouse_pos = pygame.mouse.get_pos()
         screen.blit(plunger_cursor, (mouse_pos[0]-15, mouse_pos[1]-35))
+        pygame.mouse.set_visible(False)
 
         pygame.display.update()
 
